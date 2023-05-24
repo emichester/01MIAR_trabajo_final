@@ -4,7 +4,7 @@ from dash.exceptions import PreventUpdate
 import dash_core_components as dcc
 import pandas as pd
 import plotly.graph_objects as go
-from utils.data_cleaning_utils import *
+from data_cleaning_utils import *
 import plotly.figure_factory as ff
 
 
