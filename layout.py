@@ -6,9 +6,14 @@ import pandas as pd
 import plotly.graph_objects as go
 from data_cleaning_utils import *
 import plotly.figure_factory as ff
+from plot_utils import map_plot
 
 
-df= pd.read_parquet(r'data_frame.gzip')
+df, df_map= pd.read_parquet(r'data_frame.gzip'), pd.read_parquet("Analisis/datos_para_plotly")
+df_map['text'] = df_map['Town'] \
+    + '<br>Sales: $' + (df_map['Sale Amount']).astype(str) \
+    + '<br>Type: ' + df_map['Property Type']
+
 df, df_sales_stats= clean_input_df(df)
 
 
@@ -49,25 +54,29 @@ app.layout = html.Div(children=[
                         dcc.Dropdown(id= 'input_var_town', options= ['Sale Amount', 'Sales Ratio', 'Assessed Value'], style= {'width': '600px', 'margin-left': '20px'}),
                         dcc.Graph(id= 'town-graph')
                     ])
-                ])
+                ]),
+                html.Hr(),
+                html.H5('Spatial analysis for Sale Amount'),
+                dcc.Graph(figure= map_plot(df_map))
+
 
             ]),
 
             dcc.Tab(id= 'predictive-analysis-tab', label= 'Predictive analysis', children= [
-                html.Div(children= [
-                                    html.Div(children= [
-                                        dcc.Input(id= 'Input-year', type= 'number', placeholder= 'Introduce Year', style= {'width': '200px', 'margin-left': '20px'}),
-                                        dcc.Dropdown(id= 'Dropdown-town', options= df['Town'].drop_duplicates().to_list(), placeholder= 'Select Town', style= {'width': '200px', 'margin-left': '20px'}),
-                                        dcc.Dropdown(id= 'Dropdown-street', options= df['Street'].drop_duplicates().to_list(), placeholder= 'Select Street', style= {'width': '200px', 'margin-left': '20px'}),
-                                        dcc.Dropdown(id= 'Dropdown-property-type', options= df['Property Type'].drop_duplicates().to_list(), placeholder= 'Select Property Type', style= {'width': '200px', 'margin-left': '20px'}),
-                                        dcc.Dropdown(id= 'Dropdown-residential-type', options= df['Residential Type'].drop_duplicates().to_list(), placeholder= 'Select Residential Type', style= {'width': '200px', 'margin-left': '20px'})
-                                    ], style= {'display': 'flex', 'margin-top': '50px'}),
-                                    html.Div(children= [
-                                        html.Button(id= 'submit-pred-data', children= 'Submit data', style= {'width': '100px', 'height': '50px', 'margin-top': '20px', 'margin-left': '20px'})
-                                    ])
+                # html.Div(children= [
+                #                     html.Div(children= [
+                #                         dcc.Input(id= 'Input-year', type= 'number', placeholder= 'Introduce Year', style= {'width': '200px', 'margin-left': '20px'}),
+                #                         dcc.Dropdown(id= 'Dropdown-town', options= df['Town'].drop_duplicates().to_list(), placeholder= 'Select Town', style= {'width': '200px', 'margin-left': '20px'}),
+                #                         dcc.Dropdown(id= 'Dropdown-street', options= df['Street'].drop_duplicates().to_list(), placeholder= 'Select Street', style= {'width': '200px', 'margin-left': '20px'}),
+                #                         dcc.Dropdown(id= 'Dropdown-property-type', options= df['Property Type'].drop_duplicates().to_list(), placeholder= 'Select Property Type', style= {'width': '200px', 'margin-left': '20px'}),
+                #                         dcc.Dropdown(id= 'Dropdown-residential-type', options= df['Residential Type'].drop_duplicates().to_list(), placeholder= 'Select Residential Type', style= {'width': '200px', 'margin-left': '20px'})
+                #                     ], style= {'display': 'flex', 'margin-top': '50px'}),
+                #                     html.Div(children= [
+                #                         html.Button(id= 'submit-pred-data', children= 'Submit data', style= {'width': '100px', 'height': '50px', 'margin-top': '20px', 'margin-left': '20px'})
+                #                     ])
 
 
-                ])
+                # ])
             ])
             ])
 
