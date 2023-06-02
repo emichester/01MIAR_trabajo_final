@@ -4,9 +4,9 @@ from dash.exceptions import PreventUpdate
 import dash_core_components as dcc
 import pandas as pd
 import plotly.graph_objects as go
-from data_cleaning_utils import *
+from utils.data_cleaning_utils import *
 import plotly.figure_factory as ff
-from plot_utils import map_plot
+from utils.plot_utils import map_plot
 
 
 df, df_map= pd.read_parquet(r'data_frame.gzip'), pd.read_parquet("Analisis/datos_para_plotly")
