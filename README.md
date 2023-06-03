@@ -1,6 +1,10 @@
 # 01MIAR_trabajo_final
 Trabajo final para la asignatura 01 Python para la Inteligencia Artificial del Máster Universitario en Inteligencia Artificial
 
+## Integrantes del grupo:
+- [Emilio Jesús Hernández Salas](https://www.linkedin.com/in/emiliojhs)
+- [Jesús Martín Alcalá](https://www.linkedin.com/in/jesús-martín-alcalá-306b05152)
+
 
 ## Notebooks de analisis, data cleansing y regresión
 ### Análisis de los datos, acondicionamiento y primera aproximación de modelo predictivo
