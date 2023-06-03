@@ -7,9 +7,10 @@ import plotly.graph_objects as go
 from utils.data_cleaning_utils import *
 import plotly.figure_factory as ff
 from utils.plot_utils import map_plot
+import os
 
-
-df, df_map= pd.read_parquet(r'data_frame.gzip'), pd.read_parquet("Analisis/datos_para_plotly")
+path= os.path.join('Analisis', 'data_frame.gzip')
+df, df_map= pd.read_parquet(path), pd.read_parquet("Analisis/datos_para_plotly")
 df_map['text'] = df_map['Town'] \
     + '<br>Sales: $' + (df_map['Sale Amount']).astype(str) \
     + '<br>Type: ' + df_map['Property Type']
