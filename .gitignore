@@ -3,3 +3,7 @@ test*.py
 
 # environment
 .venv
+
+# cache
+__pycache__/*
+utils/__pycache__/*

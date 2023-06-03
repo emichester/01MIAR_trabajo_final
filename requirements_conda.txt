@@ -26,3 +26,8 @@ six==1.16.0
 tenacity==8.2.2
 Werkzeug==2.2.3
 wincertstore==0.2
+seaborn
+geopy
+scikit-learn
+matplotlib
+xgboost
