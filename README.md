@@ -32,5 +32,5 @@ Trabajo final para la asignatura 01 Python para la Inteligencia Artificial del M
 $ python index.py # lanzamiento de la aplicación
 ```
 
-## Notas
-- No nos ha dado tiempo a integrar en la aplicación el modelo predictivo que se explica en los notebooks.
+## Notas.
+- No nos ha dado tiempo a integrar en la aplicación el modelo predictivo que se explica en los notebooks. 
