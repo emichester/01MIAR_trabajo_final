@@ -21,7 +21,7 @@ Trabajo final para la asignatura 01 Python para la Inteligencia Artificial del M
 
 <br>
 
-![image.png](res/image.png)
+![image.png](/res/image.png)
 
 ## Uso de la aplicación
 ```bash
